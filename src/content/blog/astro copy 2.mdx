@@ -1,0 +1,44 @@
+---
+heroImage: /src/assets/images/ade72a0adffd77a1dead3fa9724ba57f45ceaa0e-1479x1109.jpg
+category: Transmitter
+description: "การแก้ไขปัญหาเครื่องส่ง NEC สถานีระนองออกอากาศ ได้ไม่เต็ม\_100%"
+pubDate: 2022-07-01T22:00:00.000Z
+draft: false
+tags:
+  - ชุมพร
+  - ระนอง
+  - การแก้ไขปัญหา
+  - เครื่องส่ง
+title: การแก้ไขปัญหาเครื่องส่ง NEC สถานีระนองออกอากาศ ได้ไม่เต็ม 100%
+---
+
+## การแก้ไขปัญหาเครื่องส่ง NEC สถานีระนองออกอากาศ ได้ไม่เต็ม 100%
+
+อาการเสีย
+
+> เครื่องส่ง NEC ของ MUX มีปัญหาออกอากาศด้วย Power output ได้ไม่ถึง 100%
+
+![](https://raw.githubusercontent.com/Jaylaelike/blog-template/main/src/assets/images/a20649457e237d5daa2a04dfe96a75fa9dfd2a28-1434x899.jpg)
+
+### ขั้นตอนการตรวจสอบ
+
+1. ทำการ ON เครื่องส่ง MUX ที่มีปัญหาลง Dummy
+2. ทำการปิดการใช้งาน AGC พบว่าค่า Power ก่อนและหลังปิดไม่มีการเปลี่ยนแปลง
+3. ทำการวัด Power ที่เครื่องส่งออกอากาศ ทำการตรวจสอบว่า Power ที่ออก 80% ที่แสดงหน้า Txcontrol ออก 80% จรึงหรือไม่
+4. ทำการตรวจสอบและเปรียบเทียบค่าพารามิเตอร์ของ PA ตอนทำงานปกติกับตอนมีปัญหา ว่า PA ทำงานได้ปกติทั้งสองตัว กำลังส่งและกระแสมีความผิดปกติหรือไม่
+
+> จากการตรวจสอบในครั้งนี้ ใช้ Power Meter วัด Power ที่ออกหลังของเครื่องส่ง ทำการวัดได้ P = 472.481 W ซึ่งใกล้เคียงกับค่าที่แสดงที่ Txcontrol Output 80% = 466w และ ทำการเปรียบเทียบพารามิเตอร์ของ PA พบว่าค่า Power ตกทั้งสองตัว หลังการเปรียบเทียบค่าพารามิเตอร์ก่อนมีปัญหาและตอนมีปัญหา ค่ากระแส DPA เท่าเดิม ส่วนค่า FPA มีการกินกระแสที่ลดลงทั้ง 2 PA
+
+![](https://raw.githubusercontent.com/Jaylaelike/blog-template/main/src/assets/images/dccd1464e23e981b34ee049c3552e9076b52d525-1479x1109.jpg)
+
+![](https://raw.githubusercontent.com/Jaylaelike/blog-template/main/src/assets/images/c7077be4f3409f012156ab1a1e2b128dfe89f6d7-1278x649.jpg)
+
+### วิธีการแก้ไข
+
+1. ทำการปิด AGC ที่ Exciter ของเครื่อง Mux โดยการ เข้าหน้า Exciter >> ทำการลาก AGC ลงมา >> Automatic Gain Control >> AGC แล้วทำการเอาเครื่องหมาย √ ที่ Enable ออก![](https://raw.githubusercontent.com/Jaylaelike/blog-template/main/src/assets/images/ece47295ca876d461c5850694bfa09c351b1c7cd-1007x772.png)
+2. ทำการปรับเพิ่ม Power ของเครื่องส่ง เข้าหน้า Exciter >> ลาก RF Output ลงมา >> Settings >> Level โดยจะทำการปรับเพิ่มค่า Level เมื่อปรับเพิ่มค่า Level กำลังส่งของเครื่องส่งจะเพิ่มขึ้นด้วย โดยจะปรับเพิ่มทีละ 0.1 dBm แล้วทำการวัด Power ที่ออกจริงด้วย Power meter โดยปรับจนกำลังส่งออกได้ตามที่ต้องการ![](https://raw.githubusercontent.com/Jaylaelike/blog-template/main/src/assets/images/70cd262ab0d29501cde00bc12359ed3f1c79e4a4-1002x768.png)
+3. เมื่อปรับกำลังส่งได้แล้ว ให้รอไว้สักแปปค่า Power จะเพิ่มขึ้นเอง ให้เราเราทำการปรับค่า Level ให้ลดลง ค่า Power ก็จะลดลงเรื่อยๆ ปรับลดลงจนค่ากลับมาเท่าเดิม (ค่า Level ที่ก่อนการปรับเพิ่มขึ้น) ค่ากำลังส่งจะกลับมาปกติ
+4. เมื่อตรวจสอบค่ากำลังส่งกลับมาปกติแล้วให้ทำการไปเปิด AGC ให้ ON ตามเดิม โดยการเข้าหน้า Exciter >> ทำการลาก AGC ลงมา >> Automatic Gain Control >> AGC แล้วทำการติ๊กเครื่องหมาย √ ที่ Enable
+5. ทำการตรวจสอบกำลังส่งหลังจาก ON AGC อีกครั้ง ถ้าค่าปกติตามเดิม ถือเป็นการแก้ไขที่เสร็จเรียบร้อย![](https://raw.githubusercontent.com/Jaylaelike/blog-template/main/src/assets/images/ca5f78812a7475ffff47da7ac919a218eb11291c-1390x1031.jpg)
+
+![](https://raw.githubusercontent.com/Jaylaelike/blog-template/main/src/assets/images/9213f4a0fa72f40d400e902475125e538c4b97ee-1479x1109.jpg)
