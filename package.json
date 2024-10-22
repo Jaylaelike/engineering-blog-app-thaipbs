@@ -3,10 +3,12 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "npx tinacms dev -c \"astro dev\"",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "sync": "astro sync",
+		"postbuild": "pagefind --site dist",
     "astro": "astro"
   },
   "dependencies": {
