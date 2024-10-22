@@ -5,14 +5,14 @@ import tailwind from "@astrojs/tailwind";
 import { remarkReadingTime } from "./src/utils/readTime.ts";
 import embeds from "astro-embed/integration";
 import sentry from "@sentry/astro";
-import vercel from '@astrojs/vercel/serverless';
+// import vercel from '@astrojs/vercel/serverless';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
-   adapter: vercel({
-  	webAnalytics: { enabled: true }
-  }),
+  // output: 'server',
+  //  adapter: vercel({
+  // 	webAnalytics: { enabled: true }
+  // }),
   site: "https://engineering-blog-thaipbs.vercel.app/",
   // Write here your website url
   markdown: {
