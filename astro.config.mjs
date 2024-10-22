@@ -1,4 +1,5 @@
-import { defineConfig } from "astro/config";
+// import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
@@ -13,6 +14,9 @@ export default defineConfig({
   //  adapter: vercel({
   // 	webAnalytics: { enabled: true }
   // }),
+  image: {
+    service: passthroughImageService(),
+  },
   site: "https://engineering-blog-thaipbs.vercel.app/",
   // Write here your website url
   markdown: {
